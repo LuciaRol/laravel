@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CitaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,7 +18,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', function () {
+
+
+
+Route::get('/register', function () {
     return view('welcome');
 });
 
@@ -26,8 +30,15 @@ Route::get('/quienes-somos', function () {
 });
 
 Route::get('/citas', function () {
-    return view('citas');
+     return view('citas');
 });
+
+// Route::get('/citas', [CitaController::class, 'index']);
+
+
+
+
+Route::get('/citas', [CitaController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
