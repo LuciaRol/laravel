@@ -29,7 +29,12 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <ul>
+                    <li><a href = "/">Inicio</a>
+                    <li><a href = "/quienes-somos">Quienes somos</a>
+                    <li><a href = "/citas">Citas</a>
+                </ul>
+                @yield('content') 
             </main>
         </div>
     </body>
