@@ -3,28 +3,17 @@
 @section('title', 'Crear Cita')
 
 @section('content')
-<form action="{{ route('guardar-cita') }}" method="POST">
-    @csrf <!-- Directiva de Blade para protección CSRF -->
-
-    <!-- Campos del formulario -->
-    <div>
-        <label for="fecha_hora">Fecha y hora:</label>
-        <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
-    </div>
-    <div>
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required></textarea>
-    </div>
-    <div>
-        <label for="empleado_id">ID del empleado:</label>
-        <input type="number" id="empleado_id" name="empleado_id" required>
-    </div>
-    <div>
-        <label for="cliente_id">ID del cliente:</label>
-        <input type="number" id="cliente_id" name="cliente_id" required>
-    </div>
-
-    <!-- Botón de enviar -->
-    <button type="submit">Crear Cita</button>
+<form method="POST" action="{{ route('clientes.store') }}">
+    @csrf
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre"><br>
+    <label for="apellidos">Apellidos:</label><br>
+    <input type="text" id="apellidos" name="apellidos"><br>
+    <label for="telefono">Teléfono:</label><br>
+    <input type="text" id="telefono" name="telefono"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+    <button type="submit">Crear Cliente</button>
 </form>
+
 @endsection

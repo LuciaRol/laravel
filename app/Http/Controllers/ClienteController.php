@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use Auth;
+
 
 class ClienteController extends Controller
 {
@@ -20,8 +22,10 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
-            'email' => 'required|string|email|max:255|unique:clientes',
+            'email' => 'required|string|email|max:255|unique:cliente',
         ]);
+
+       
 
         // Crear un nuevo cliente en la base de datos
         Cliente::create([
@@ -29,10 +33,12 @@ class ClienteController extends Controller
             'apellidos' => $request->apellidos,
             'telefono' => $request->telefono,
             'email' => $request->email,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         // Redireccionar a una página de éxito o mostrar un mensaje
         return redirect()->route('clientes.create')->with('success', 'Cliente creado exitosamente.');
-    }
 }
 
+}

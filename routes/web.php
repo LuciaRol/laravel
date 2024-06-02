@@ -36,6 +36,8 @@ Route::post('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-ci
 Route::post('/guardar-cita', [CitaController::class, 'guardarCita'])->name('guardar-cita');
 
 Route::get('/crear-cliente', [ClienteController::class, 'create'])->name('crear-cliente');
+Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
+
 Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
 Route::get('/citas', function () {
