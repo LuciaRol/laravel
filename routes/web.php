@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CitaController;
@@ -34,13 +35,12 @@ Route::post('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-ci
 
 Route::post('/guardar-cita', [CitaController::class, 'guardarCita'])->name('guardar-cita');
 
+Route::get('/crear-cliente', [ClienteController::class, 'create'])->name('crear-cliente');
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
 Route::get('/citas', function () {
      return view('citas');
 });
-
-// Route::get('/citas', [CitaController::class, 'index']);
-
 
 
 
