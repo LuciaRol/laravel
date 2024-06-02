@@ -18,14 +18,24 @@
                     <x-nav-link :href="url('/citas')" :active="request()->is('citas')">
                         {{ __('Citas') }}
                     </x-nav-link>
+                    @auth
+                    <x-nav-link :href="url('/crear-cita')" :active="request()->is('crear-cita')">
+                            {{ __('Crear Cita') }}
+                        </x-nav-link>
+                        <x-nav-link :href="url('/crear-cliente')" :active="request()->is('crear-cliente')">
+                            {{ __('Crear Cliente') }}
+                        </x-nav-link>
+                        @endauth
 
                     @guest
+                      
                         <x-nav-link :href="url('/register')" :active="request()->is('register')">
                             {{ __('Register') }}
                         </x-nav-link>
                         <x-nav-link :href="url('/login')" :active="request()->is('login')">
                             {{ __('Login') }}
                         </x-nav-link>
+                        
                     @endguest
                 </div>
             </div>
