@@ -50,4 +50,12 @@ class ClienteController extends Controller
         return redirect()->route('clientes.create')->with('success', 'Cliente creado exitosamente.');
 }
 
+    public function destroy(Cliente $cliente)
+        {
+            // Eliminar el cliente
+            $cliente->delete();
+    
+            // Redirigir a alguna página de éxito o a donde prefieras
+            return redirect()->route('clientes.index')->with('success', 'El cliente ha sido eliminado correctamente.');
+        }
 }

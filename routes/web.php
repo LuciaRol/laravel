@@ -50,6 +50,9 @@ Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
 Route::get('/ver-clientes', [ClienteController::class, 'index'])->name('clientes.index');
 
 
+Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+
+
 //Route::get('/citas', [CitaController::class, 'index']);
 
 

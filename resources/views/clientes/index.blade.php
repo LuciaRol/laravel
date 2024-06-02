@@ -16,6 +16,7 @@
                     <th>Teléfono</th>
                     <th>Email</th>
                     <th>Fecha de Registro</th>
+                    <th>Acciones</th> <!-- Columna para los botones de acción -->
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +28,14 @@
                         <td>{{ $cliente->telefono }}</td>
                         <td>{{ $cliente->email }}</td>
                         <td>{{ $cliente->created_at }}</td>
+                        <td>
+                            <!-- Formulario para eliminar -->
+                            <form action="{{ route('clientes.destroy', $cliente->cliente_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
