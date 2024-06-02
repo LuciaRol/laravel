@@ -54,7 +54,7 @@ Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->nam
 
 Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
 
-//Route::get('/citas', [CitaController::class, 'index']);
+Route::delete('/citas/{cita}', [CitaController::class, 'destroy'])->name('citas.destroy');
 
 
 require __DIR__.'/auth.php';

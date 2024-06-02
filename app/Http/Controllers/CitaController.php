@@ -52,4 +52,13 @@ class CitaController extends Controller
     // Redirigir a alguna página de éxito o a donde prefieras
     return redirect()->route('citas.index')->with('success', 'La cita se ha creado correctamente.');
 }
+
+public function destroy(Cita $cita)
+{
+    // Eliminar la cita
+    $cita->delete();
+
+    // Redirigir a alguna página de éxito o a donde prefieras
+    return redirect()->route('citas.index')->with('success', 'La cita ha sido eliminada correctamente.');
+}
 }

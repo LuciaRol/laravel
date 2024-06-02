@@ -16,6 +16,7 @@
                     <th>Empleado</th>
                     <th>Cliente</th>
                     <th>Fecha de Registro</th>
+                    <th>Acciones</th> <!-- Nueva columna para las acciones -->
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +28,14 @@
                         <td>{{ $cita->empleado_id }}</td>
                         <td>{{ $cita->cliente_id }}</td>
                         <td>{{ $cita->fecha_registro }}</td>
+                        <td>
+                            <!-- Formulario para eliminar la cita -->
+                            <form action="{{ route('citas.destroy', $cita->cita_id) }}" method="POST" style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
