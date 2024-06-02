@@ -54,11 +54,32 @@ class CitaController extends Controller
 }
 
 public function destroy(Cita $cita)
-{
-    // Eliminar la cita
-    $cita->delete();
+    {
+        // Eliminar la cita
+        $cita->delete();
 
-    // Redirigir a alguna página de éxito o a donde prefieras
-    return redirect()->route('citas.index')->with('success', 'La cita ha sido eliminada correctamente.');
-}
+        // Redirigir a alguna página de éxito o a donde prefieras
+        return redirect()->route('citas.index')->with('success', 'La cita ha sido eliminada correctamente.');
+    }
+
+
+public function update(Request $request, Cita $cita)
+    {
+        // Validar los datos del formulario de actualización
+        $request->validate([
+            'fecha_hora' => 'required|date',
+            'descripcion' => 'required|string',
+            // Añade aquí las validaciones para los otros campos si es necesario
+        ]);
+
+        // Actualizar los datos de la cita
+        $cita->update([
+            'fecha_hora' => $request->fecha_hora,
+            'descripcion' => $request->descripcion,
+            // Actualiza aquí los otros campos si es necesario
+        ]);
+
+        // Redirigir a alguna página de éxito o a donde prefieras
+        return redirect()->route('citas.index')->with('success', 'La cita se ha actualizado correctamente.');
+    }
 }
