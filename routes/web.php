@@ -52,6 +52,7 @@ Route::get('/ver-clientes', [ClienteController::class, 'index'])->name('clientes
 
 Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
+Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
 
 //Route::get('/citas', [CitaController::class, 'index']);
 

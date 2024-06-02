@@ -58,4 +58,27 @@ class ClienteController extends Controller
             // Redirigir a alguna página de éxito o a donde prefieras
             return redirect()->route('clientes.index')->with('success', 'El cliente ha sido eliminado correctamente.');
         }
+
+    public function update(Request $request, Cliente $cliente)
+        {
+            // Validar los datos del formulario
+            $request->validate([
+                'nombre' => 'required|string|max:255',
+                'apellidos' => 'required|string|max:255',
+                'telefono' => 'nullable|string|max:20',
+                'email' => 'required|string|email|max:255|unique:cliente,email,'.$cliente->cliente_id.',cliente_id',
+            ]);
+        
+            // Actualizar los datos del cliente
+            $cliente->update([
+                'nombre' => $request->nombre,
+                'apellidos' => $request->apellidos,
+                'telefono' => $request->telefono,
+                'email' => $request->email,
+                'updated_at' => now(),
+            ]);
+        
+            // Redirigir a alguna página de éxito o a donde prefieras
+            return redirect()->route('clientes.index')->with('success', 'Los cambios han sido guardados exitosamente.');
+        }        
 }
