@@ -26,7 +26,13 @@ Route::get('/register', function () {
 });
 
 
-Route::get('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-cita');
+Route::get('/crear-cita', function () {
+    return view('crear-cita');
+});
+
+Route::post('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-cita');
+
+Route::post('/guardar-cita', [CitaController::class, 'guardarCita'])->name('guardar-cita');
 
 
 Route::get('/citas', function () {
