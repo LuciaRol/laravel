@@ -8,16 +8,16 @@
 
     <!-- Campos del formulario -->
     <div>
-        <label for="fecha_hora">Fecha y hora:</label>
-        <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+    </div>
+    <div>
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required>
     </div>
     <div>
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" name="descripcion" required></textarea>
-    </div>
-    <div>
-        <label for="empleado_id">ID del empleado:</label>
-        <input type="number" id="empleado_id" name="empleado_id" required>
     </div>
     <div>
         <label for="cliente_id">ID del cliente:</label>
@@ -27,4 +27,5 @@
     <!-- Botón de enviar -->
     <button type="submit">Crear Cita</button>
 </form>
+
 @endsection

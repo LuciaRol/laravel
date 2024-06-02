@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cita;
+use Illuminate\Support\Facades\Auth;
+
 
 class CitaController extends Controller
 {
@@ -25,22 +27,29 @@ class CitaController extends Controller
 {
     // Validar la solicitud
     $request->validate([
-        'fecha_hora' => 'required|date',
+        'fecha' => 'required|date',
+        'hora' => 'required|date_format:H:i',
         'descripcion' => 'required|string',
-        'empleado_id' => 'required|numeric',
         'cliente_id' => 'required|numeric',
     ]);
 
+    // Combinar la fecha y hora en un campo datetime
+    $fechaHora = $request->fecha . ' ' . $request->hora;
+
+    // Obtener el ID del usuario autenticado (empleado)
+    $empleadoId = Auth::id();
+    
     // Crear una nueva cita con los datos proporcionados en la solicitud
     Cita::create([
-        'fecha_hora' => $request->fecha_hora,
+        'fecha_hora' => $fechaHora,
         'descripcion' => $request->descripcion,
-        'empleado_id' => $request->empleado_id,
+        'empleado_id' => $empleadoId,
         'cliente_id' => $request->cliente_id,
+        'fecha_registro' => now(), // Si 'fecha_registro' es un campo adicional
     ]);
+
 
     // Redirigir a alguna página de éxito o a donde prefieras
     return redirect()->route('citas.index')->with('success', 'La cita se ha creado correctamente.');
 }
-
 }

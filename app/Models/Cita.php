@@ -11,6 +11,7 @@ class Cita extends Model
 
     protected $table = 'citas';
     protected $primaryKey = 'cita_id';
+    
     protected $fillable = ['fecha_hora', 'descripcion', 'empleado_id', 'cliente_id', 'fecha_registro'];
 
     public function empleado()

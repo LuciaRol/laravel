@@ -44,9 +44,10 @@ Route::get('/citas', function () {
      return view('citas');
 });
 
+Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
 
 
-Route::get('/citas', [CitaController::class, 'index']);
+//Route::get('/citas', [CitaController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
