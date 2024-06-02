@@ -12,15 +12,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="url('/')" :active="request()->is('/')">
+                        {{ __('Inicio') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Pedir Cita') }}
+                    <x-nav-link :href="url('/citas')" :active="request()->is('citas')">
+                        {{ __('Citas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Reunion') }}
-                    </x-nav-link>
+
+                    @guest
+                        <x-nav-link :href="url('/register')" :active="request()->is('register')">
+                            {{ __('Register') }}
+                        </x-nav-link>
+                        <x-nav-link :href="url('/login')" :active="request()->is('login')">
+                            {{ __('Login') }}
+                        </x-nav-link>
+                    @endguest
                 </div>
             </div>
 
