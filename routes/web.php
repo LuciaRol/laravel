@@ -25,9 +25,9 @@ Route::get('/register', function () {
     return view('welcome');
 });
 
-Route::get('/quienes-somos', function () {
-    return view('quienes-somos');
-});
+
+Route::get('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-cita');
+
 
 Route::get('/citas', function () {
      return view('citas');

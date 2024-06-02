@@ -19,9 +19,9 @@
                         {{ __('Citas') }}
                     </x-nav-link>
                     @auth
-                    <x-nav-link :href="url('/crear-cita')" :active="request()->is('crear-cita')">
-                            {{ __('Crear Cita') }}
-                        </x-nav-link>
+                    <x-nav-link :href="route('crear-cita')" :active="request()->routeIs('crear-cita')">
+                        {{ __('Crear Cita') }}
+                    </x-nav-link>
                         <x-nav-link :href="url('/crear-cliente')" :active="request()->is('crear-cliente')">
                             {{ __('Crear Cliente') }}
                         </x-nav-link>
