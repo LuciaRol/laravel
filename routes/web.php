@@ -47,6 +47,9 @@ Route::get('/citas', function () {
 Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
 
 
+Route::get('/ver-clientes', [ClienteController::class, 'index'])->name('clientes.index');
+
+
 //Route::get('/citas', [CitaController::class, 'index']);
 
 

@@ -21,10 +21,13 @@
                     @auth
                     <x-nav-link :href="route('crear-cita')" :active="request()->routeIs('crear-cita')">
                     {{ __('Crear Cita') }}
-                </x-nav-link>
-                        <x-nav-link :href="url('/crear-cliente')" :active="request()->is('crear-cliente')">
-                            {{ __('Crear Cliente') }}
-                        </x-nav-link>
+                    </x-nav-link>
+                    <x-nav-link :href="url('/crear-cliente')" :active="request()->is('crear-cliente')">
+                        {{ __('Crear Cliente') }}
+                    </x-nav-link>
+                    <x-nav-link :href="url('/ver-clientes')" :active="request()->is('ver-clientes')">
+                        {{ __('Ver Clientes') }}
+                    </x-nav-link>
                         @endauth
 
                     @guest

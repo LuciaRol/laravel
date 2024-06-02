@@ -10,6 +10,15 @@ use Auth;
 
 class ClienteController extends Controller
 {
+
+    public function index()
+    {
+        // Obtener todos los clientes
+        $clientes = Cliente::all();
+
+        // Pasar los clientes a la vista
+        return view('clientes.index', compact('clientes'));
+    }
     public function create()
     {
         return view('clientes.create');
