@@ -17,7 +17,7 @@ class relleno_seeder extends Seeder
     {
         DB::table('users')->insert([
             'nombre'=>Str::random(10),
-            'email'=>Str::random(10).'@gmail.com',
+            'usuario'=>Str::random(10).'@gmail.com',
             'contrasena'=>Hash::make('password'),
         ]);
     }
