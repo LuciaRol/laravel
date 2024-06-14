@@ -20,14 +20,14 @@
                         {{ __('Citas') }}
                     </x-nav-link>
                     
-                    <x-nav-link :href="route('crear-cita')" :active="request()->routeIs('crear-cita')" class="text-white hover:text-yellow-500 border-b-2 border-transparent hover:border-yellow-500">
-                        {{ __('Crear Cita') }}
+                    
+                    
+                    <x-nav-link :href="url('/ver-clientes')" :active="request()->is('ver-clientes')" class="text-white hover:text-yellow-500 border-b-2 border-transparent hover:border-yellow-500">
+                        {{ __('Crear Cita y modificar Clientes') }}
                     </x-nav-link>
+
                     <x-nav-link :href="url('/crear-cliente')" :active="request()->is('crear-cliente')" class="text-white hover:text-yellow-500 border-b-2 border-transparent hover:border-yellow-500">
                         {{ __('Crear Cliente') }}
-                    </x-nav-link>
-                    <x-nav-link :href="url('/ver-clientes')" :active="request()->is('ver-clientes')" class="text-white hover:text-yellow-500 border-b-2 border-transparent hover:border-yellow-500">
-                        {{ __('Ver Clientes') }}
                     </x-nav-link>
                     @endauth
 
