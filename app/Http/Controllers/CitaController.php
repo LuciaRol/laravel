@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cita;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,9 +20,14 @@ class CitaController extends Controller
     }
 
     public function crearCita(Request $request)
-    {
-        return view('crear-cita');
-    }
+{
+    // Obtener todos los clientes
+    $clientes = Cliente::all();
+
+    // Pasar los clientes a la vista
+    return view('crear-cita', compact('clientes'));
+}
+
 
     public function guardarCita(Request $request)
 {

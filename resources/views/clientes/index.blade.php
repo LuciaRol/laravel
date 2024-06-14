@@ -3,6 +3,55 @@
 @section('title', 'Clientes')
 
 @section('content')
+
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="create-cita-container mt-5">
+    <h2 class="mb-4">Crear cita</h>
+    <form action="{{ route('guardar-cita') }}" method="POST" class="create-cita-form">
+        @csrf <!-- Directiva de Blade para protección CSRF -->
+
+        <!-- Campos del formulario -->
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </div>
+        <div>
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" name="hora" required>
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+        </div>
+        <div>
+            <label for="cliente_id">Cliente:</label>
+            <select id="cliente_id" name="cliente_id" required>
+                <option value="" disabled selected>Seleccione un cliente</option>
+                @foreach($clientes as $cliente)
+                    <option value="{{ $cliente->cliente_id }}">{{ $cliente->nombre }} {{ $cliente->apellidos }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Botón de enviar -->
+        <button type="submit">Crear cita</button>
+    </form>
+</div>
+
+
+
+
+
+
 <div class="ver-clientes-container mt-5">
     @if ($clientes->isEmpty())
         <div class="ver-clientes-alert" role="alert">
@@ -80,4 +129,7 @@
         </table>
     @endif
 </div>
+
+
+
 @endsection

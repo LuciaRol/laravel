@@ -27,13 +27,17 @@ Route::get('/register', function () {
 });
 
 
-Route::get('/crear-cita', function () {
-    return view('crear-cita');
-});
+// Route::get('/crear-cita', function () {
+//     return view('crear-cita');
+// });
 
-Route::post('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-cita');
+// Route::post('/crear-cita', [CitaController::class, 'crearCita'])->name('crear-cita');
 
-Route::post('/guardar-cita', [CitaController::class, 'guardarCita'])->name('guardar-cita');
+// Route::post('/guardar-cita', [CitaController::class, 'guardarCita'])->name('guardar-cita');
+
+Route::get('/citas/crear', [CitaController::class, 'crearCita'])->name('crear-cita');
+Route::post('/citas/guardar', [CitaController::class, 'guardarCita'])->name('guardar-cita');
+
 
 Route::get('/crear-cliente', [ClienteController::class, 'create'])->name('crear-cliente');
 Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
