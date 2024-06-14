@@ -38,7 +38,20 @@ class CitaController extends Controller
 
     // Obtener el ID del usuario autenticado (empleado)
     $empleadoId = Auth::id();
-    
+
+    // Verificar si ya existe una cita para el empleado en el mismo intervalo de una hora
+    $fechaHoraInicio = date('Y-m-d H:i:s', strtotime($fechaHora . ' -1 hour'));
+    $fechaHoraFin = date('Y-m-d H:i:s', strtotime($fechaHora . ' +1 hour'));
+
+    $citaExistente = Cita::where('empleado_id', $empleadoId)
+        ->whereBetween('fecha_hora', [$fechaHoraInicio, $fechaHoraFin])
+        ->first();
+
+    if ($citaExistente) {
+        // Redirigir de vuelta con un mensaje de error
+        return redirect()->back()->withErrors(['error' => 'A esa hora estás ocupad@']);
+    }
+
     // Crear una nueva cita con los datos proporcionados en la solicitud
     Cita::create([
         'fecha_hora' => $fechaHora,
@@ -47,7 +60,6 @@ class CitaController extends Controller
         'cliente_id' => $request->cliente_id,
         'fecha_registro' => now(), // Si 'fecha_registro' es un campo adicional
     ]);
-
 
     // Redirigir a alguna página de éxito o a donde prefieras
     return redirect()->route('citas.index')->with('success', 'La cita se ha creado correctamente.');

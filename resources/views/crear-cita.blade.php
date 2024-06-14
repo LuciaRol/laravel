@@ -3,6 +3,15 @@
 @section('title', 'Crear Cita')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="create-cita-container mt-5">
     <h2 class="mb-4">Crear cita</h>
     <form action="{{ route('guardar-cita') }}" method="POST" class="create-cita-form">
